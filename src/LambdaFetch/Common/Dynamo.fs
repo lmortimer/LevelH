@@ -7,11 +7,10 @@ open Amazon.DynamoDBv2
 open Amazon
 open Amazon.Runtime
 open Common.Types
+open Giraffe
+open Microsoft.AspNetCore.Http
 
-type BottleList = XmlProvider<"../Common/resources/taplist.xml">
-
-let client = new AmazonDynamoDBClient(new StoredProfileAWSCredentials(), RegionEndpoint.USEast1)
-let table = TableContext.Create<TapList>(client, tableName = "hashigo-taps", createIfNotExists = true)
+type BottleList = XmlProvider<"Common/resources/taplist.xml">
 
 let xmlToBeer (item: BottleList.Product) =
     {
@@ -31,6 +30,9 @@ let getTapData =
 let fetchAndSaveTapList (): unit =
     let data = BottleList.Parse(getTapData)
 
+    let client = new AmazonDynamoDBClient(new StoredProfileAWSCredentials(), RegionEndpoint.USEast1)
+    let table = TableContext.Create<TapList>(client, tableName = "hashigo-taps", createIfNotExists = true)
+
     // IsSome to get rid of empty elements
     let pouring = 
         data.Beers.Products
@@ -44,9 +46,3 @@ let fetchAndSaveTapList (): unit =
     printfn "%A" tapList
     
     table.PutItem tapList |> ignore
-    
-let getLatestTapList =
-    table.Scan()
-    |> Array.toList
-    |> List.sortByDescending (fun x -> x.AddedOn)
-    |> List.tryHead

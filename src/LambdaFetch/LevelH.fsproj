@@ -15,8 +15,8 @@
     <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="3.0.4" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="../Common/Types.fs" />
-    <Compile Include="../Common/Dynamo.fs" />
+    <Compile Include="Common/Types.fs" />
+    <Compile Include="Common/Dynamo.fs" />
     <Compile Include="AppHandlers.fs" />
     <Compile Include="Setup.fs" />
   </ItemGroup>

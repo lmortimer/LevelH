@@ -18,11 +18,13 @@ open Giraffe
 
 let configureApp (app : IApplicationBuilder) =
     let env = app.ApplicationServices.GetService<IHostingEnvironment>()
+
     (match env.IsDevelopment() with
     | true  -> app.UseDeveloperExceptionPage()
     | false -> app.UseGiraffeErrorHandler AppHandlers.errorHandler)
         .UseStaticFiles()
         .UseGiraffe(AppHandlers.webApp)
+    
 
 let configureServices (services : IServiceCollection) =
 
