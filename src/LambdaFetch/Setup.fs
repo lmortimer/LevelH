@@ -9,6 +9,14 @@ open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
 open Giraffe
 
+// ---------------------------------
+// Error handler
+// ---------------------------------
+
+let errorHandler (ex : Exception) (logger : ILogger) =
+    logger.LogError(EventId(), ex, "An unhandled exception has occurred while executing the request.")
+    clearResponse >=> setStatusCode 500 >=> text ex.Message
+
 
 
 // ---------------------------------
@@ -21,7 +29,7 @@ let configureApp (app : IApplicationBuilder) =
 
     (match env.IsDevelopment() with
     | true  -> app.UseDeveloperExceptionPage()
-    | false -> app.UseGiraffeErrorHandler AppHandlers.errorHandler)
+    | false -> app.UseGiraffeErrorHandler errorHandler)
         .UseStaticFiles()
         .UseGiraffe(AppHandlers.webApp)
     
