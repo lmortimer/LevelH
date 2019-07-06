@@ -1,10 +1,10 @@
-module Common.Types
+module Types
 
 open System
 open FSharp.AWS.DynamoDB
 open FSharp.Data
 
-type BottleList = XmlProvider<"Common/resources/taplist.xml">
+type BottleList = XmlProvider<"resources/taplist.xml">
 
 type Beer = {
     [<HashKey>]
@@ -20,6 +20,7 @@ type TapList = {
     [<HashKey>]
     [<RangeKey>]
     AddedOn: DateTimeOffset
+    TTL: int64
     Beer: Beer[]
 }
 

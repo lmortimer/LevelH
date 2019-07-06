@@ -1,21 +1,14 @@
 
-https://y1pzss1zhd.execute-api.us-east-1.amazonaws.com/Prod/tap
+https://y1pzss1zhd.execute-api.us-east-1.amazonaws.com/Prod/tap 
 
 ```{
-  "body": "eyJ0ZXN0IjoiYm9keSJ9",
-  "resource": "/{proxy+}",
-  "path": "/path/to/resource",
-  "httpMethod": "POST",
+  "body": "",
+  "resource": "tap",
+  "path": "/tap",
+  "httpMethod": "GET",
   "isBase64Encoded": true,
-  "queryStringParameters": {
-    "foo": "bar"
-  },
-  "pathParameters": {
-    "proxy": "/path/to/resource"
-  },
-  "stageVariables": {
-    "baz": "qux"
-  },
+  "queryStringParameters": {},
+  "stageVariables": {},
   "headers": {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
     "Accept-Encoding": "gzip, deflate, sdch",
@@ -27,7 +20,7 @@ https://y1pzss1zhd.execute-api.us-east-1.amazonaws.com/Prod/tap
     "CloudFront-Is-SmartTV-Viewer": "false",
     "CloudFront-Is-Tablet-Viewer": "false",
     "CloudFront-Viewer-Country": "US",
-    "Host": "1234567890.execute-api.ap-southeast-2.amazonaws.com",
+    "Host": "y1pzss1zhd.execute-api.us-east-1.amazonaws.com",
     "Upgrade-Insecure-Requests": "1",
     "User-Agent": "Custom User Agent String",
     "Via": "1.1 08f323deadbeefa7af34d5feb414ce27.cloudfront.net (CloudFront)",
@@ -39,7 +32,7 @@ https://y1pzss1zhd.execute-api.us-east-1.amazonaws.com/Prod/tap
   "requestContext": {
     "accountId": "123456789012",
     "resourceId": "123456",
-    "stage": "prod",
+    "stage": "Prod",
     "requestId": "c6af9ac6-7b61-11e6-9a41-93e8deadbeef",
     "requestTime": "09/Apr/2015:12:34:56 +0000",
     "requestTimeEpoch": 1428582896000,
@@ -56,10 +49,10 @@ https://y1pzss1zhd.execute-api.us-east-1.amazonaws.com/Prod/tap
       "userAgent": "Custom User Agent String",
       "user": null
     },
-    "path": "/prod/path/to/resource",
-    "resourcePath": "/{proxy+}",
-    "httpMethod": "POST",
-    "apiId": "1234567890",
+    "path": "/tap",
+    "resourcePath": "tap",
+    "httpMethod": "GET",
+    "apiId": "y1pzss1zhd",
     "protocol": "HTTP/1.1"
   }
 }```

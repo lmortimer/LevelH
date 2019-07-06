@@ -1,3 +1,6 @@
+# Level H
+Project showing F# with Type Providers with .Net Core running on AWS Lambda, Dynamo, API Gateway, AWS Serverless Application Model
+
 # Giraffe Serverless Application
 
 This project shows how to run a [Giraffe](https://github.com/giraffe-fsharp/Giraffe) project as an AWS Lambda exposed through Amazon API Gateway. The NuGet package [Amazon.Lambda.AspNetCoreServer](https://www.nuget.org/packages/Amazon.Lambda.AspNetCoreServer) contains a Lambda function that is used to translate requests from API Gateway into the ASP.NET Core framework and then the responses from ASP.NET Core back to API Gateway.
