@@ -11,7 +11,7 @@ open FSharp.Data
 
 open Types;
 
-
+(*
 let client = new AmazonDynamoDBClient()
 let table = TableContext.Create<TapList>(client, tableName = "hashigo-taps", createIfNotExists = true)
  
@@ -20,7 +20,7 @@ let getTapData =
 
 // required for local development
 
-(*
+*)
 open Amazon
 open Amazon.Runtime
 let client = new AmazonDynamoDBClient(new StoredProfileAWSCredentials(), RegionEndpoint.USEast1)
@@ -28,7 +28,7 @@ let table = TableContext.Create<TapList>(client, tableName = "hashigo-taps", cre
 
 let getTapData =
     File.ReadAllText("resources/taplist.xml")
-*)
+
     
 /// fetches the latest copy of the beer list, selects the beers which are now pouring, and inserts those into dynamo
 let updateTapListHandler  =
@@ -69,12 +69,9 @@ let latestTapListHandler: HttpHandler =
 
 let webApp:HttpHandler =
     choose [
-        GET >=>
-            choose [
-                route "/tap" >=> latestTapListHandler
-            ]
-        POST >=> 
-            choose [
-                route "/tap" >=> updateTapListHandler
-            ]
+        route "/tap" >=> choose [
+            GET >=> latestTapListHandler
+            POST >=> updateTapListHandler
+        ]
+
         setStatusCode 404 >=> text "Not Found" ]
