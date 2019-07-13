@@ -18,7 +18,6 @@ type Beer = {
 
 type TapList = {
     [<HashKey>]
-    [<RangeKey>]
     AddedOn: DateTimeOffset
     TTL: int64
     Beer: Beer[]
