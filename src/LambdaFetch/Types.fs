@@ -7,7 +7,6 @@ open FSharp.Data
 type BottleList = XmlProvider<"resources/taplist.xml">
 
 type Beer = {
-    [<HashKey>]
     Name: string
     Volume: string
     Price: string
