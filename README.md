@@ -1,10 +1,10 @@
 ## Overview
-F# web app hosted on Lambda to view the Hashigo Zake tap list.
+F# web app hosted on Lambda to scrape and view the Hashigo Zake tap list. Read the blog post on how to build it [here](https://isthisit.nz/posts/2019/fsharp-web-application-aws-lambda/).
 
 `/tap`
 
-* `GET` - Returns the beer currently on tap.
-* `POST` - Updates the beer list.
+- `POST` Scrapes the bar's website and stores the updated tap list in the database.
+- `GET` Returns a list of what is being poured from the database.
 
 ## Deployment
 Requires
@@ -18,7 +18,8 @@ Deploy to Lambda with
 ## Testing
 Test through the Lambda console with the following JSON, replacing `GET` with `POST` when appropriate.
 
-```{
+```
+{
   "body": "",
   "resource": "tap",
   "path": "/tap",
@@ -52,4 +53,5 @@ Test through the Lambda console with the following JSON, replacing `GET` with `P
     "apiId": "FOO",
     "protocol": "HTTP/1.1"
   }
-}```
+}
+```
