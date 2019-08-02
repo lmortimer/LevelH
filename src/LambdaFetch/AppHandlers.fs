@@ -56,13 +56,13 @@ let updateTapListHandler  =
 let latestTapListHandler: HttpHandler = 
     fun (next: HttpFunc) (ctx: HttpContext) ->
 
-        let latetTapList = 
+        let latestTapList = 
             table.Scan() 
             |> Array.toList
             |> List.sortByDescending (fun x -> x.AddedOn)
             |> List.tryHead
 
-        match latetTapList with
+        match latestTapList with
         | Some tapList -> json tapList next ctx
         | None -> json obj next ctx
         
